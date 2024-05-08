@@ -275,7 +275,7 @@ void createPlaylist(const std::string& name, const std::string& surname)
                     //system("CLS");
                     std::cout << "\n\n\n\n\n\n\n\n\n\n";
                     std::cout << "Would you like to add other songs?" << std::endl;
-                    std::cout << "Type '1' if yes, else type '2' and you''ll be redirected to the menu." << std::endl;
+                    std::cout << "Type '1' if yes, else type '2'." << std::endl;
 
                     int ans = userInput();
                     while(ans != 1 && ans != 2)
@@ -290,7 +290,25 @@ void createPlaylist(const std::string& name, const std::string& surname)
                     else
                     {
                         //system("CLS");
-                        std::cout << "\n\n\n\n\n\n\n\n\n";
+                        std::cout << "\n\n\n\n\n\n\n\n\n\n";
+
+                        songString += '"';
+
+                        removeDoubleCommas(songString);
+                        addPlaylistToTXT(playlistName, songString);
+
+                        Playlist newPlaylist = {playlistName, songString};
+                        globalPlaylistList.push_back(newPlaylist);
+
+                        std::cout << playlistName << '-' << songString << std::endl;
+                        std::cout << "Playlist successfully added!" << std:: endl;
+                        std::cout << std::endl << "Press any key to go back to the menu:";
+
+                        std::string randomInput;
+                        std::cin >> randomInput;
+
+                        //system("CLS");
+                        std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
                         adding = 0;
                     }
                 }
